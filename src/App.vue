@@ -1,87 +1,131 @@
 <template>
-  <v-btn>
-     Boton Material Design
-  </v-btn>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <v-app>
+    <v-card style="width: 360px; height: 760px; display: block" class="borde">
+      <v-row
+        class="v-flex flex-row justify-center align-center mt-4 borde"
+        style="padding: 0px; height: 60px"
+      >
+        <v-btn class="boton mr-2" color="green"> Iniciar Ayuno </v-btn>
+        <v-btn class="boton ml-2" color="pink"> Finalizar ayuno </v-btn>
+      </v-row>
+      <v-row class="mb-8 mt-10 borde">
+        <v-progress-circular
+          :model-value="value"
+          :rotate="360"
+          :size="200"
+          :width="30"
+          color="teal"
+          style="margin: 0 auto"
+        >
+          {{ value }}
+        </v-progress-circular>
+      </v-row>
+      <v-row class="borde" style="width:355px; margin:0 auto;">
+        <v-alert color="purple" variant="outlined">
+          <template v-slot:title >10 Horas</template>
+          ¡Fantástico! Estás promoviendo un estado antiinflamatorio y anabólico en tu
+          cuerpo, maximizando los beneficios de tu ayuno.
+        </v-alert>
+      </v-row>
+      <v-row class="mt-16 v-flex flex-row justify-center">
+        <v-btn color="indigo"> Mostrar Resumen </v-btn>
+      </v-row>
+    </v-card>
+  </v-app>
 </template>
 
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
+
+export default {
+  data() {
+    return {
+      interval: {},
+      value: 0,
+    };
+  },
+  beforeUnmount() {
+    clearInterval(this.interval);
+  },
+  mounted() {
+    this.interval = setInterval(() => {
+      if (this.value === 100) {
+        this.value = 0;
+      } else {
+        this.value += 10;
+      }
+    }, 1000);
+  },
+};
 </script>
 
-
 <style scoped>
+.boton {
+  text-transform: none;
+}
+.borde {
+  border: 1px solid red;
+}
+.watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 100%;
+  background-image: url("/assets/images/watermark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.5;
+  z-index: -1;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
 .logo {
   display: block;
   margin: 0 auto 2rem;
 }
-
 nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
 }
-
 nav a.router-link-exact-active {
   color: var(--color-text);
 }
-
 nav a.router-link-exact-active:hover {
   background-color: transparent;
 }
-
 nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
 }
-
 nav a:first-of-type {
   border: 0;
 }
-
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
-
   .logo {
     margin: 0 2rem 0 0;
   }
-
   header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
   }
-
   nav {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }

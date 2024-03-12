@@ -1,10 +1,14 @@
 @import './base.css';
 
 #app {
+  border:1px solid rgba(36, 35, 35, 0.801);
   max-width: 1280px;
+  height:95vh;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+  place-items:center;
+  box-shadow: 6px 6px 10px 3px rgba(0, 0, 0, 0.5);
 }
 
 a,
@@ -21,15 +25,4 @@ a,
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
