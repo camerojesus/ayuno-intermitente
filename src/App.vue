@@ -1,6 +1,14 @@
 <template>
   <v-app>
-    <v-card style="width: 360px; height: 760px; display: block" class="borde">
+    <v-card style="width: 380px; height: 800px; display: block" elevation="6">
+      <v-img
+        :src="backgroundimage"
+        class="align-end"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+        height="200px"
+        cover
+      >
+      </v-img>
       <v-row
         class="v-flex flex-row justify-center align-center mt-4 borde"
         style="padding: 0px; height: 60px"
@@ -20,12 +28,13 @@
           {{ value }}
         </v-progress-circular>
       </v-row>
-      <v-row class="borde" style="width:355px; margin:0 auto;">
-        <v-alert color="purple" variant="outlined">
-          <template v-slot:title >10 Horas</template>
-          ¡Fantástico! Estás promoviendo un estado antiinflamatorio y anabólico en tu
-          cuerpo, maximizando los beneficios de tu ayuno.
-        </v-alert>
+      <v-row class="borde" style="width: 355px; margin: 0 auto">
+        <v-alert
+          text="¡Fantástico! Estás promoviendo un estado antiinflamatorio y anabólico en tu cuerpo, maximizando los beneficios de tu ayuno."
+          title="10 Horas"
+          type="info"
+          variant="tonal"
+        ></v-alert>
       </v-row>
       <v-row class="mt-16 v-flex flex-row justify-center">
         <v-btn color="indigo"> Mostrar Resumen </v-btn>
@@ -35,14 +44,12 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   data() {
     return {
       interval: {},
       value: 0,
+      backgroundimage: "http://gescel.online/img/MarcaAgua01.png",
     };
   },
   beforeUnmount() {
@@ -65,7 +72,7 @@ export default {
   text-transform: none;
 }
 .borde {
-  border: 1px solid red;
+  border: 0px solid red;
 }
 .watermark {
   position: fixed;
