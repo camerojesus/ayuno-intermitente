@@ -2,10 +2,10 @@
   <v-app>
     <v-card style="width: 380px; height: 800px; display: block" elevation="6">
       <v-img
-        :src="backgroundimage"
-        class="align-end"
+        :src="cImagenFondo"
+        class="align-end fill-width"
         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        height="200px"
+        height="200px"        
         cover
       >
       </v-img>
@@ -13,8 +13,8 @@
         class="v-flex flex-row justify-center align-center mt-4 borde"
         style="padding: 0px; height: 60px"
       >
-        <v-btn class="boton mr-2" color="green"> Iniciar Ayuno </v-btn>
-        <v-btn class="boton ml-2" color="pink"> Finalizar ayuno </v-btn>
+        <v-btn class="boton mr-2" color="green" style="width:145px;"> Iniciar Ayuno </v-btn>
+        <v-btn class="boton ml-2" color="pink" style="width:145px;"> Finalizar ayuno </v-btn>
       </v-row>
       <v-row class="mb-8 mt-10 borde">
         <v-progress-circular
@@ -49,13 +49,13 @@ export default {
     return {
       interval: {},
       value: 0,
-      backgroundimage: "http://gescel.online/img/MarcaAgua01.png",
+      cImagenFondo: "/images/MarcaAgua01.png"
     };
   },
   beforeUnmount() {
     clearInterval(this.interval);
   },
-  mounted() {
+  mounted() {    
     this.interval = setInterval(() => {
       if (this.value === 100) {
         this.value = 0;
@@ -74,19 +74,7 @@ export default {
 .borde {
   border: 0px solid red;
 }
-.watermark {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 600px;
-  height: 100%;
-  background-image: url("/assets/images/watermark.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0.5;
-  z-index: -1;
-}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
