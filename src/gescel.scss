@@ -1,0 +1,15 @@
+$BackgroundGescel: rgb(232, 240, 233);
+$VerdeGescel: #054e42;
+
+.ContenedorSombra { 
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    border-style:solid; 
+    border-radius: 5%;
+    background-color: $BackgroundGescel;
+    border: 2px solid #DDD;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.27);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.27);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.27);
+  }   

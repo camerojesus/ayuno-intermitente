@@ -1,4 +1,5 @@
 <template>
+  <Prueba></Prueba>
   <v-app>
     <v-card style="width: 380px; height: 800px; display: block" elevation="6">
       <v-img
@@ -44,7 +45,14 @@
 </template>
 
 <script>
+import Prueba from "./components/Prueba.vue";
+import Login from "./components/Login.vue";
 export default {
+  name: "App",
+  components: {
+    Prueba,
+    Login,
+  },
   data() {
     return {
       interval: {},
